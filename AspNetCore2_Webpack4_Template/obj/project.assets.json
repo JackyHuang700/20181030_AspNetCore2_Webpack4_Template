@@ -11509,11 +11509,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JackyHuang\\Desktop\\AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template.csproj",
+      "projectUniqueName": "C:\\Users\\JackyHuang\\Documents\\GitHub\\20181030_AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template.csproj",
       "projectName": "AspNetCore2_Webpack4_Template",
-      "projectPath": "C:\\Users\\JackyHuang\\Desktop\\AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template.csproj",
+      "projectPath": "C:\\Users\\JackyHuang\\Documents\\GitHub\\20181030_AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template.csproj",
       "packagesPath": "C:\\Users\\JackyHuang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JackyHuang\\Desktop\\AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template\\obj\\",
+      "outputPath": "C:\\Users\\JackyHuang\\Documents\\GitHub\\20181030_AspNetCore2_Webpack4_Template\\AspNetCore2_Webpack4_Template\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

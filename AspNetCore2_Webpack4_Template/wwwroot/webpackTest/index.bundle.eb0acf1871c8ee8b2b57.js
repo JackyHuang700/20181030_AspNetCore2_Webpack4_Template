@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log('asdfadf');\r\n\n\n//# sourceURL=webpack:///./ClientApp/js/index.js?");
+eval("console.log('index');\r\n\n\n//# sourceURL=webpack:///./ClientApp/js/index.js?");
 
 /***/ })
 

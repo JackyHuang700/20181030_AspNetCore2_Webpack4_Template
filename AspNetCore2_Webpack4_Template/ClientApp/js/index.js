@@ -1,1 +1,1 @@
-console.log('asdfadf');
+console.log('index');

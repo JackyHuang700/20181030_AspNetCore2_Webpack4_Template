@@ -81,19 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./ClientApp/js/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./ClientApp/js/index2.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./ClientApp/js/index.js":
-/*!*******************************!*\
-  !*** ./ClientApp/js/index.js ***!
-  \*******************************/
+/***/ "./ClientApp/js/index2.js":
+/*!********************************!*\
+  !*** ./ClientApp/js/index2.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log('asdfadf');\r\n\n\n//# sourceURL=webpack:///./ClientApp/js/index.js?");
+eval("console.log('asdfadf');\r\n\n\n//# sourceURL=webpack:///./ClientApp/js/index2.js?");
 
 /***/ })
 

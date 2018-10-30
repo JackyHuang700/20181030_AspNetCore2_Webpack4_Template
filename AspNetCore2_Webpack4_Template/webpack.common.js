@@ -2,6 +2,10 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
+
+// console.log(`aaaaaaaaaaaaaaaaaa: ${process.env.NODE_ENV}`)
+
+
 module.exports = {
   // entry: './ClientApp/js/index.js',
   // output: {

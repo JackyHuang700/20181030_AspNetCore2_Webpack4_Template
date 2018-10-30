@@ -14,11 +14,9 @@ module.exports = {
   },
   output: {
     publicPath: '/',
-    // filename: '[name].bundle.js',
-    filename: '[name].bundle.[hash].js',
+    filename: '[name].bundle.[hash:8].js',
     path: path.resolve(__dirname, 'wwwroot/webpackTest')
   },
-
   module: {
     rules: [
       {
@@ -55,7 +53,6 @@ module.exports = {
       template: path.resolve(__dirname, 'Views/Shared/_LayoutTemplate.cshtml') ,
       filename: path.resolve(__dirname, 'Views/Shared/_Layout.cshtml'),
       chunks: ["index"]
-      // chunks: ['Shared'],
     })
   ]
 }

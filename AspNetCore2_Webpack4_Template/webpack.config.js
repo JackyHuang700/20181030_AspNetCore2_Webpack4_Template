@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   // entry: './ClientApp/js/index.js',
@@ -48,6 +49,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(['wwwroot/webpackTest']),
     new HtmlWebpackPlugin({
       inject: false,
       template: path.resolve(__dirname, 'Views/Shared/_LayoutTemplate.cshtml') ,

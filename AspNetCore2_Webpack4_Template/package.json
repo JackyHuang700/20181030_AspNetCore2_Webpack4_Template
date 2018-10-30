@@ -4,7 +4,10 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --mode development",
+    "watch": "webpack --mode development --watch",
+    "product": "webpack --mode production"
+
   },
   "author": "",
   "license": "ISC",

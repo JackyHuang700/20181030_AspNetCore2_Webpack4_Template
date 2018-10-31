@@ -20,7 +20,6 @@ module.exports = merge(common, {
     publicPath: '/',
     proxy: {
       '*': {
-        // '/api': {
         // target: 'http://localhost:57288/',
         target: 'https://localhost:44376/',
         secure: false

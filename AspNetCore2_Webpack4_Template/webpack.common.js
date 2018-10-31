@@ -58,7 +58,8 @@ module.exports = {
       inject: false,
       template: path.resolve(__dirname, 'Views/Shared/_LayoutTemplate.cshtml') ,
       filename: path.resolve(__dirname, 'Views/Shared/_Layout.cshtml'),
-      chunks: ["index"]
+      chunks: ["index"],
+      isProd: false,
     })
   ]
 }

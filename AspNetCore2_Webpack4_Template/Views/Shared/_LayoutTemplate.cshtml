@@ -68,10 +68,17 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-    <% for (var chunk in htmlWebpackPlugin.files.chunks) {
-    %>
-    <script src="~/webpackTest<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script><% }
-    %>
+
+    
+    <%if (htmlWebpackPlugin.options.isProd) {%>
+        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+            <script src="~/webpackTest<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+        <% } %>
+    <%} else {%>
+        <script src="http://localhost:8080/index.bundle.js"></script>
+        <script src="http://localhost:8080/index2.bundle.js"></script>
+    <% } %>
+
 
     @RenderSection("Scripts", required: false)
 </body>

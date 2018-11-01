@@ -1,5 +1,9 @@
 import printMe from './print'
 // import '../css/styles.css'
+import {
+  cube,
+  square,
+} from './multiFunc'
 
 console.log('index');
 
@@ -19,7 +23,8 @@ function component() {
 }
 
 document.body.appendChild(component())
-
+console.log(cube(5))
+console.log(square(5))
 
 if (module.hot) {
   // module.hot.accept('./print.js', function() {

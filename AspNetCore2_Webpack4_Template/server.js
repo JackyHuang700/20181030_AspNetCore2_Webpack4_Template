@@ -5,6 +5,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
 const app = express()
+const expressPort = 3000
 const config = require('./webpack.dev.js')
 const compiler = webpack(config)
 
@@ -24,7 +25,9 @@ app.use(
   })
 )
 
-app.use(webpackHotMiddleware(compiler, {}))
+app.use(webpackHotMiddleware(compiler, {
+  // path: "/__webpack_hmr",
+}))
 
 app.use(
   '/',
@@ -35,14 +38,14 @@ app.use(
 )
 
 // Serve the files on port 3000.
-app.listen(3000, err => {
+app.listen(expressPort, err => {
   if (err) {
     console.error(error)
   } else {
     console.info(
       '==> ?  Listening on port %s. Open up http://localhost:%s/ in your browser.',
-      3000,
-      3000
+      expressPort,
+      expressPort
     )
   }
   // console.log('Example app listening on port 3000!\n')

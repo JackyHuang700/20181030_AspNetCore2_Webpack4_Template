@@ -8,23 +8,23 @@ const app = express()
 const config = require('./webpack.dev.js')
 const compiler = webpack(config)
 
+app.use(express.static(__dirname + '/wwwroot/'))
 
 // Tell express to use the webpack-dev-middleware and use the webpack.config.js
 // configuration file as a base.
 app.use(
+  // 複寫 webpack 設定
   webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath
+    publicPath: config.output.publicPath,
     // 控制台不显示信息（只有警告和错误）默认：false
     // noInfo: true,
-    // stats: { colors: true }
+    stats: {
+      colors: true
+    }
   })
 )
 
-app.use(
-  webpackHotMiddleware(compiler, {
-    // log: console.log
-  })
-)
+app.use(webpackHotMiddleware(compiler, {}))
 
 app.use(
   '/',

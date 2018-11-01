@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
+// 專門給 webpack-hot-middleware 用的
 const webpackhotMiddleware = 'webpack-hot-middleware/client?reload=true'
 
 module.exports = merge(common, {

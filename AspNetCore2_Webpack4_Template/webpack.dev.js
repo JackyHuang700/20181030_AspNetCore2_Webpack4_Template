@@ -6,6 +6,8 @@ const common = require('./webpack.common.js')
 const webpackhotMiddleware = 'webpack-hot-middleware/client?reload=true'
 
 module.exports = merge(common, {
+  // 模式
+  mode: 'development',
   entry: getNewCommonEntry(common),
   output: {
     publicPath: '/',
@@ -18,7 +20,6 @@ module.exports = merge(common, {
     // 這個可以選擇使用。
     // new webpack.NoErrorsPlugin()
   ],
-  mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
     // contentBase 這個要了解，要再加上
@@ -49,7 +50,7 @@ function getNewCommonEntry(common) {
   const {
     entry
   } = common
-  let commonEntry = JSON.parse(JSON.stringify(entry))
+  const commonEntry = JSON.parse(JSON.stringify(entry))
   let newCommonEntry = {}
   for (let key in commonEntry) {
     let value = commonEntry[key]

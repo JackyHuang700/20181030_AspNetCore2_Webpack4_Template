@@ -1,26 +1,19 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-
-// console.log(`aaaaaaaaaaaaaaaaaa: ${process.env.NODE_ENV}`)
-
+console.log(`aaaaaaaaaaaaaaaaaa: ${process.env.NODE_ENV}`)
 
 module.exports = {
-  // entry: './ClientApp/js/index.js',
-  // output: {
-  //   filename: 'main.js',
-  //   path: path.resolve(__dirname, 'wwwroot/webpackTest')
-  // },
-
   entry: {
     index: './ClientApp/js/index.js',
-    index2: './ClientApp/js/index2.js',
+    index2: './ClientApp/js/index2.js'
   },
   output: {
     publicPath: '/',
-    filename: '[name].bundle.[hash:8].js',
-    path: path.resolve(__dirname, 'wwwroot/webpackTest')
+    path: path.resolve(__dirname, 'wwwroot/webpackTest'),
+    chunkFilename: '[name].bundle.js'
   },
   module: {
     rules: [
@@ -56,10 +49,20 @@ module.exports = {
     new CleanWebpackPlugin(['wwwroot/webpackTest']),
     new HtmlWebpackPlugin({
       inject: false,
-      template: path.resolve(__dirname, 'Views/Shared/_LayoutTemplate.cshtml') ,
+      template: path.resolve(__dirname, 'Views/Shared/_LayoutTemplate.cshtml'),
       filename: path.resolve(__dirname, 'Views/Shared/_Layout.cshtml'),
-      chunks: ["index"],
-      isProd: false,
-    })
-  ]
+      chunks: ['index'],
+      isProd: false
+    }),
+  ],
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       common: {
+  //       // vendors: {
+  //         filename: '[name].bundle.js'
+  //       }
+  //     }
+  //   }
+  // }
 }

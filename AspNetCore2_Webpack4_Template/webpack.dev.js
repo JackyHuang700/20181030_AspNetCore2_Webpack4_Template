@@ -4,21 +4,23 @@ const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 // 專門給 webpack-hot-middleware 用的
 const webpackhotMiddleware = 'webpack-hot-middleware/client?reload=true'
+const modeStr = 'development'
 
 module.exports = merge(common, {
   // 模式
-  mode: 'development',
+  mode: modeStr,
   entry: getNewCommonEntry(common),
   output: {
-    publicPath: '/',
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'wwwroot/webpackTest')
+    filename: '[name].bundle.js'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
     // 當程式碼有錯誤時，不更新畫面，如果錯誤被修正才會hot reload
     // 這個可以選擇使用。
     // new webpack.NoErrorsPlugin()
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(modeStr)
+    })
   ],
   devtool: 'inline-source-map',
   devServer: {
@@ -47,9 +49,7 @@ module.exports = merge(common, {
 
 //
 function getNewCommonEntry(common) {
-  const {
-    entry
-  } = common
+  const { entry } = common
   const commonEntry = JSON.parse(JSON.stringify(entry))
   let newCommonEntry = {}
   for (let key in commonEntry) {

@@ -25,6 +25,7 @@ function component() {
 document.body.appendChild(component())
 console.log(cube(5))
 console.log(square(5))
+// console.log(`process.env.NODE_ENV: ${process.env.NODE_ENV}`)
 
 if (module.hot) {
   // module.hot.accept('./print.js', function() {

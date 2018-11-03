@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // 專門給 webpack-hot-middleware 用的
 const webpackhotMiddleware = 'webpack-hot-middleware/client?reload=true'
 const modeStr = 'development'
@@ -20,7 +21,8 @@ module.exports = merge(common, {
     // new webpack.NoErrorsPlugin()
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(modeStr)
-    })
+    }),
+    new BundleAnalyzerPlugin()
   ],
   devtool: 'inline-source-map',
   devServer: {

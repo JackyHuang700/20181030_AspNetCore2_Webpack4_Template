@@ -61,6 +61,9 @@ module.exports = {
   //       common: {
   //       // vendors: {
   //         filename: '[name].bundle.js'
+  // test: /[\\/]node_modules[\\/]/,
+  // name: '[name].bundle.js',
+  //         chunks: "all"
   //       }
   //     }
   //   }

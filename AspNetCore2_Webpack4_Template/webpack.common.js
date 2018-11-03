@@ -8,7 +8,8 @@ console.log(`aaaaaaaaaaaaaaaaaa: ${process.env.NODE_ENV}`)
 module.exports = {
   entry: {
     index: './ClientApp/js/index.js',
-    index2: './ClientApp/js/index2.js'
+    index2: './ClientApp/js/index2.js',
+    index3: './ClientApp/js/index.ts'
   },
   output: {
     publicPath: '/',
@@ -17,6 +18,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.css$/,
         exclude: /node_modules/,
@@ -55,6 +61,9 @@ module.exports = {
       isProd: false
     }),
   ],
+  // resolve: {
+  //   extensions: [ '.tsx', '.ts', '.js' ]
+  // },
   // optimization: {
   //   splitChunks: {
   //     cacheGroups: {

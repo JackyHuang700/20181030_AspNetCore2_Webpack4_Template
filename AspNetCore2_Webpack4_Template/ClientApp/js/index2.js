@@ -1,5 +1,5 @@
 import print from './print'
-// import '../css/styles.css'
+import '../css/styles.css'
 
 console.log('index2');
 console.log(cube(5))

@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
@@ -9,7 +8,7 @@ module.exports = {
   entry: {
     index: './ClientApp/js/index.js',
     index2: './ClientApp/js/index2.js',
-    index3: './ClientApp/js/index.ts'
+    // index3: './ClientApp/js/index.ts'
   },
   output: {
     publicPath: '/',

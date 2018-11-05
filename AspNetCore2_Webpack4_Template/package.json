@@ -8,7 +8,8 @@
     "dev:server": "webpack-dev-server --config webpack.dev.js",
     "dev:middle": "node server.js",
     "watch": "webpack --mode development --watch",
-    "prod": "webpack --config webpack.prod.js"
+    "prod": "webpack --config webpack.prod.js",
+    "help": "webpack --help",
   },
   "author": "",
   "license": "ISC",

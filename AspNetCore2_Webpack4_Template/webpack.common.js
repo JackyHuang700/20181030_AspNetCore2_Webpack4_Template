@@ -19,6 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
+        // 使用 ts-loader 时，设置 happyPackMode: true / transpileOnly: true
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/

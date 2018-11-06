@@ -1,3 +1,4 @@
+const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
@@ -31,11 +32,9 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    // new HappyPack({
-    //   id: 'babel',
-    //   threads: 4,
-    //   loaders: ['babel-loader']
-    // }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(modeStr)
+    }),
     new HappyPack({
       id: 'babelJs',
       loaders: [
@@ -52,24 +51,21 @@ module.exports = merge(common, {
       ],
       threadPool: happyThreadPool
     }),
-    // new UglifyJsPlugin({
-    //   sourceMap: true,
-    //   parallel: os.cpus().length,
-    //   cache: true
-    // }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(modeStr)
-    })
+    new UglifyJsPlugin({
+      sourceMap: true,
+      parallel: os.cpus().length - 1,
+      cache: true
+    }),
   ],
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        sourceMap: true,
-        parallel: os.cpus().length,
-        cache: true
-      })
-    ]
-  }
+  // optimization: {
+  //   minimizer: [
+  //     new UglifyJsPlugin({
+  //       // sourceMap: true,
+  //       // parallel: os.cpus().length  - 1,
+  //       // cache: true
+  //     })
+  //   ]
+  // }
 })
 
 console.log(`bbbbbbbbbbbb: ${process.env.NODE_ENV}`)

@@ -62,3 +62,10 @@ function another_adder (...numbers) {
 }
 
 console.log(another_adder(1, 2, 3, 4, 5, 6, 7, 8))
+
+
+let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
+console.log(x); // 1
+console.log(y); // 2
+console.log(z); // { a: 3, b: 4 }
+[5, 6].map(n => console.log(n));

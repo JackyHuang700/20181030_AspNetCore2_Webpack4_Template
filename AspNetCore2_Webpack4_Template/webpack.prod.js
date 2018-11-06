@@ -44,9 +44,9 @@ module.exports = merge(common, {
             // optional: 'runtime',
             cacheDirectory: true
           },
-          options: {
-            presets: ['@babel/preset-env']
-          }
+          // options: {
+          //   presets: ['@babel/preset-env']
+          // }
         }
       ],
       threadPool: happyThreadPool

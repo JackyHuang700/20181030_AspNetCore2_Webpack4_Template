@@ -5,11 +5,15 @@ const common = require('./webpack.common.js')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // 專門給 webpack-hot-middleware 用的
 const webpackhotMiddleware = 'webpack-hot-middleware/client?reload=true'
-const modeStr = 'development'
+const { 
+  modeDevelopment,
+  devServerPort,
+  devServerProxyTarget,
+ } = require("./webpack.define.js")
 
 module.exports = merge(common, {
   // 模式
-  mode: modeStr,
+  mode: modeDevelopment,
   entry: getNewCommonEntry(common),
   output: {
     filename: '[name].bundle.js'
@@ -20,7 +24,7 @@ module.exports = merge(common, {
     // 這個可以選擇使用。
     // new webpack.NoErrorsPlugin()
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(modeStr)
+      'process.env.NODE_ENV': JSON.stringify(modeDevelopment)
     }),
     new BundleAnalyzerPlugin()
   ],
@@ -36,11 +40,11 @@ module.exports = merge(common, {
     publicPath: '/',
     proxy: {
       '*': {
-        // target: 'http://localhost:57288/',
-        target: 'https://localhost:44376/',
+        target: devServerProxyTarget,
         secure: false
       }
     },
+    port: devServerPort,
     inline: true,
     hot: true,
     // 啟動熱替換
@@ -49,7 +53,7 @@ module.exports = merge(common, {
   }
 })
 
-//
+// 添加HMR伺服器
 function getNewCommonEntry(common) {
   const { entry } = common
   const commonEntry = JSON.parse(JSON.stringify(entry))

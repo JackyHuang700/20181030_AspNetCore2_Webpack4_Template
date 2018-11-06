@@ -1,17 +1,25 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
+  const { 
+    commonInclude,
+    commonExclude,
+    modeProduction,
+    devServerPort,
+   } = require("./webpack.define.js")
 const common = require('./webpack.common.js')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const modeStr = 'production'
+
 // happypack
 const HappyPack = require('happypack')
 const os = require('os')
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
+// console.log(`bbbbbbbbbbbb: ${process.env.NODE_ENV}`)
+
 module.exports = merge(common, {
   // 模式
-  mode: modeStr,
+  mode: modeProduction,
   output: {
     filename: '[name].bundle.[hash:8].js'
   },
@@ -20,7 +28,8 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        include: [commonInclude],
+        exclude: [commonExclude],
         use: {
           // loader: 'babel-loader',
           loader: 'happypack/loader?id=babelJs'
@@ -33,10 +42,11 @@ module.exports = merge(common, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(modeStr)
+      'process.env.NODE_ENV': JSON.stringify(modeProduction)
     }),
     new HappyPack({
       id: 'babelJs',
+      threadPool: happyThreadPool,
       loaders: [
         {
           loader: 'babel-loader',
@@ -49,7 +59,6 @@ module.exports = merge(common, {
           // }
         }
       ],
-      threadPool: happyThreadPool
     }),
     new UglifyJsPlugin({
       sourceMap: true,
@@ -68,4 +77,3 @@ module.exports = merge(common, {
   // }
 })
 
-console.log(`bbbbbbbbbbbb: ${process.env.NODE_ENV}`)

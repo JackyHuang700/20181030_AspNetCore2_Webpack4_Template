@@ -30,4 +30,3 @@ C:\Users\JackyHuang\Documents\GitHub\20181030_AspNetCore2_Webpack4_Template\AspN
 C:\Users\JackyHuang\Documents\GitHub\20181030_AspNetCore2_Webpack4_Template\AspNetCore2_Webpack4_Template\obj\Debug\netcoreapp2.1\AspNetCore2_Webpack4_Template.dll
 C:\Users\JackyHuang\Documents\GitHub\20181030_AspNetCore2_Webpack4_Template\AspNetCore2_Webpack4_Template\obj\Debug\netcoreapp2.1\AspNetCore2_Webpack4_Template.pdb
 C:\Users\JackyHuang\Documents\GitHub\20181030_AspNetCore2_Webpack4_Template\AspNetCore2_Webpack4_Template\obj\Debug\netcoreapp2.1\AspNetCore2_Webpack4_Template.csproj.CopyComplete
-C:\Users\JackyHuang\Documents\GitHub\20181030_AspNetCore2_Webpack4_Template\AspNetCore2_Webpack4_Template\obj\Debug\netcoreapp2.1\AspNetCore2_Webpack4_Template.csprojAssemblyReference.cache

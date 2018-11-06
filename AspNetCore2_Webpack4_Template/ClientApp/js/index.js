@@ -4,9 +4,13 @@ import {
   cube,
   square,
 } from './multiFunc'
+// 在dll內的套件
+var _ = require('lodash');
 
 console.log('index');
 
+
+console.log('lodashhhhh', _.defaults({ 'a': 1 }, { 'a': 3, 'b': 2 }))
 
 function component() {
   var element = document.createElement('div');
@@ -35,6 +39,7 @@ if (module.hot) {
 
 }
 
+// 需要加上才會啟動HMR
 if (module.hot) {
   module.hot.accept()
 }

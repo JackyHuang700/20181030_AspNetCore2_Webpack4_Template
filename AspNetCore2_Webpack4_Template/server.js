@@ -3,9 +3,11 @@ const proxy = require('http-proxy-middleware')
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
-
+const { 
+  devServerProxyTarget,
+  expressDevServerPort,
+ } = require("./webpack.define.js")
 const app = express()
-const expressPort = 3000
 const config = require('./webpack.dev.js')
 const compiler = webpack(config)
 
@@ -32,20 +34,20 @@ app.use(webpackHotMiddleware(compiler, {
 app.use(
   '/',
   proxy({
-    target: 'https://localhost:44376/',
+    target: devServerProxyTarget,
     secure: false
   })
 )
 
 // Serve the files on port 3000.
-app.listen(expressPort, err => {
+app.listen(expressDevServerPort, err => {
   if (err) {
     console.error(error)
   } else {
     console.info(
       '==> ?  Listening on port %s. Open up http://localhost:%s/ in your browser.',
-      expressPort,
-      expressPort
+      expressDevServerPort,
+      expressDevServerPort
     )
   }
   // console.log('Example app listening on port 3000!\n')

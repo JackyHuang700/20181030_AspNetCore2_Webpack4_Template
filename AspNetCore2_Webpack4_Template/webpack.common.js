@@ -1,13 +1,22 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const {
+  commonInclude,
+  commonExclude,
+  // devServer 用這個
+  devServerPort,
+  // expressDevServer 用這個
+  expressDevServerPort
+} = require('./webpack.define.js')
 
-console.log(`aaaaaaaaaaaaaaaaaa: ${process.env.NODE_ENV}`)
+// console.log(`aaaaaaaaaaaaaaaaaa: ${process.env.NODE_ENV}`)
 
 module.exports = {
   entry: {
     index: './ClientApp/js/index.js',
-    index2: './ClientApp/js/index2.js',
+    index2: './ClientApp/js/index2.js'
     // index3: './ClientApp/js/index.ts'
   },
   output: {
@@ -20,33 +29,39 @@ module.exports = {
       {
         // 使用 ts-loader 时，设置 happyPackMode: true / transpileOnly: true
         test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
+        include: [commonInclude],
+        exclude: [commonExclude],
+        use: 'ts-loader'
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        include: [commonInclude],
+        exclude: [commonExclude],
         use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        exclude: /node_modules/,
+        include: [commonInclude],
+        exclude: [commonExclude],
         use: ['file-loader']
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        exclude: /node_modules/,
+        include: [commonInclude],
+        exclude: [commonExclude],
         use: ['file-loader']
       },
       {
         test: /\.(csv|tsv)$/,
-        exclude: /node_modules/,
+        include: [commonInclude],
+        exclude: [commonExclude],
         use: ['csv-loader']
       },
 
       {
         test: /\.xml$/,
-        exclude: /node_modules/,
+        include: [commonInclude],
+        exclude: [commonExclude],
         use: ['xml-loader']
       }
     ]
@@ -58,9 +73,16 @@ module.exports = {
       template: path.resolve(__dirname, 'Views/Shared/_LayoutTemplate.cshtml'),
       filename: path.resolve(__dirname, 'Views/Shared/_Layout.cshtml'),
       chunks: ['index'],
-      isProd: false
+      HtmlWebpackPluginOverride: true,
+      outputFile: {
+        isProd: false,
+        port: devServerPort
+      },
     }),
-  ],
+    new webpack.DllReferencePlugin({
+      manifest: require('./wwwroot/vendor/vendor.manifest.json')
+    })
+  ]
   // resolve: {
   //   extensions: [ '.tsx', '.ts', '.js' ]
   // },

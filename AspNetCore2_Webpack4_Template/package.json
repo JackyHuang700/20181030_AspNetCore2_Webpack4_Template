@@ -4,10 +4,11 @@
   "description": "",
   "private": true,
   "scripts": {
+    "dll": "webpack --config webpack.dll.js",
+    "watch": "webpack --mode development --watch",
     "dev": "webpack  --watch --config webpack.dev.js",
     "dev:server": "webpack-dev-server --config webpack.dev.js",
     "dev:middle": "node server.js",
-    "watch": "webpack --mode development --watch",
     "prod": "webpack --config webpack.prod.js",
     "help": "webpack --help"
   },
@@ -37,5 +38,9 @@
     "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "^4.1.4",
     "xml-loader": "^1.2.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "lodash": "^4.17.11"
   }
 }

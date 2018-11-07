@@ -1,12 +1,12 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-  const { 
-    commonInclude,
-    commonExclude,
-    modeProduction,
-    devServerPort,
-   } = require("./webpack.define.js")
+const {
+  commonInclude,
+  commonExclude,
+  modeProduction,
+  devServerPort
+} = require('./webpack.define.js')
 const common = require('./webpack.common.js')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
@@ -53,19 +53,28 @@ module.exports = merge(common, {
           query: {
             // optional: 'runtime',
             cacheDirectory: true
-          },
+          }
           // options: {
           //   presets: ['@babel/preset-env']
           // }
         }
-      ],
+      ]
     }),
     new UglifyJsPlugin({
       sourceMap: true,
       parallel: os.cpus().length - 1,
-      cache: true
-    }),
-  ],
+      cache: true,
+      // include: /\/includes/,
+      // exclude: /\/excludes/,
+      uglifyOptions: {
+        ie8: true,
+        compress: {
+          drop_console: true, // 删除所有的 `console` 语句，可以兼容ie浏览器
+          reduce_vars: true // 提取出出现多次但是没有定义成变量去引用的静态值
+        }
+      }
+    })
+  ]
   // optimization: {
   //   minimizer: [
   //     new UglifyJsPlugin({
@@ -76,4 +85,3 @@ module.exports = merge(common, {
   //   ]
   // }
 })
-

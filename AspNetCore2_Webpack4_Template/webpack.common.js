@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const {
   commonInclude,
   commonExclude,
@@ -77,11 +78,36 @@ module.exports = {
       outputFile: {
         isProd: false,
         port: devServerPort
-      },
+      }
     }),
     new webpack.DllReferencePlugin({
       manifest: require('./wwwroot/vendor/vendor.manifest.json')
-    })
+    }),
+    new CopyWebpackPlugin([
+      // {
+      //     from: __dirname + '/src/assets/',
+      //     to: __dirname + '/build/assets',
+      // },
+      {
+        from: path.resolve(__dirname, `ClientApp/cpoyVendor/aa/testa.js`),
+        to: path.resolve(__dirname, `wwwroot/cpoyVendor`),
+        toType: 'dir',
+      },
+      {
+        from: path.resolve(__dirname, `ClientApp/cpoyVendor/bb/testb.js`),
+        to: path.resolve(__dirname, `wwwroot/cpoyVendor`),
+        toType: 'dir',
+      },
+      {
+        from: path.resolve(__dirname, `ClientApp/cpoyVendor/`),
+        to: path.resolve(__dirname, `wwwroot/cpoyVendor/cpoyVendorTwo`),
+        toType: 'dir',
+      },
+      // {
+      //   from: path.resolve(__dirname, 'ClientApp/copyVendor/aa/test.js'),
+      //   to: path.resolve(__dirname, 'wwwroot/copyVendor/')
+      // }
+    ]),
   ]
   // resolve: {
   //   extensions: [ '.tsx', '.ts', '.js' ]

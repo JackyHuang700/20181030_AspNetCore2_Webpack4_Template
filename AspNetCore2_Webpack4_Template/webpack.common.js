@@ -84,10 +84,6 @@ module.exports = {
       manifest: require('./wwwroot/vendor/vendor.manifest.json')
     }),
     new CopyWebpackPlugin([
-      // {
-      //     from: __dirname + '/src/assets/',
-      //     to: __dirname + '/build/assets',
-      // },
       {
         from: path.resolve(__dirname, `ClientApp/cpoyVendor/aa/testa.js`),
         to: path.resolve(__dirname, `wwwroot/cpoyVendor`),
@@ -103,26 +99,6 @@ module.exports = {
         to: path.resolve(__dirname, `wwwroot/cpoyVendor/cpoyVendorTwo`),
         toType: 'dir',
       },
-      // {
-      //   from: path.resolve(__dirname, 'ClientApp/copyVendor/aa/test.js'),
-      //   to: path.resolve(__dirname, 'wwwroot/copyVendor/')
-      // }
     ]),
   ]
-  // resolve: {
-  //   extensions: [ '.tsx', '.ts', '.js' ]
-  // },
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       common: {
-  //       // vendors: {
-  //         filename: '[name].bundle.js'
-  // test: /[\\/]node_modules[\\/]/,
-  // name: '[name].bundle.js',
-  //         chunks: "all"
-  //       }
-  //     }
-  //   }
-  // }
 }

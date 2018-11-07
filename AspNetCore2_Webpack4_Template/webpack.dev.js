@@ -30,6 +30,7 @@ module.exports = merge(common, {
   ],
   devtool: 'inline-source-map',
   devServer: {
+    // contentBase: path.join(__dirname, "dist"), //静态文件根目录
     // contentBase 這個要了解，要再加上
     // contentBase: [path.join(__dirname, 'wwwroot')],
     // contentBase: path.resolve(__dirname, 'wwwroot'),
@@ -48,9 +49,17 @@ module.exports = merge(common, {
     inline: true,
     hot: true,
     // 啟動熱替換
-    hotOnly: true
-    // open: true
-  }
+    hotOnly: true,
+    // open: true,
+    // host: 'localhost',
+    // compress: false // 服务器返回浏览器的时候是否启动gzip压缩
+  },
+  // watch: true, // 开启监听文件更改，自动刷新
+  // watchOptions: {
+  //     ignored: /node_modules/, //忽略不用监听变更的目录
+  //     aggregateTimeout: 500, //防止重复保存频繁重新编译,500毫米内重复保存不打包
+  //     poll:1000 //每秒询问的文件变更的次数
+  // },
 })
 
 // 添加HMR伺服器

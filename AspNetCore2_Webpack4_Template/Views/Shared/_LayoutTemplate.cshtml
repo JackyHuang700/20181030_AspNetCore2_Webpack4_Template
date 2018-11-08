@@ -73,12 +73,13 @@
     <script src="<%=  htmlWebpackPlugin.options.outputFile.vendor %>"></script>
 
     <%if (htmlWebpackPlugin.options.outputFile.isProd) {%>
-    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-    <script src="~/webpackTest<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-    <% } %>
+        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+            <script src="~/webpackTest<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+        <% } %>
     <%} else {%>
-    <script src="http://localhost:<%= htmlWebpackPlugin.options.outputFile.port %>/index.bundle.js"></script>
-    <script src="http://localhost:<%= htmlWebpackPlugin.options.outputFile.port %>/index2.bundle.js"></script>
+        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+            <script src="http://localhost:<%= htmlWebpackPlugin.options.outputFile.port %><%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+        <% } %>
     <% } %>
 
 

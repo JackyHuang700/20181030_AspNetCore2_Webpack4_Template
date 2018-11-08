@@ -69,13 +69,14 @@ module.exports = {
       template: path.resolve(__dirname, 'Views/Shared/_LayoutTemplate.cshtml'),
       filename: path.resolve(__dirname, 'Views/Shared/_Layout.cshtml'),
       chunks: ['index'],
+      // 跳過那些模塊
+      // excludeChunks: [],
       HtmlWebpackPluginOverride: true,
-      vendor: '~/wwwroot/vendor/dll.vendor.js', //与dll配置文件中output.fileName对齐
-      hash:true,//防止缓存
+      // hash:true,//防止缓存
       outputFile: {
         vendor: '~/wwwroot/vendor/dll.vendor.js',
         isProd: false,
-        port: devServerPort
+        port: devServerPort,
       },
       minify: true,
       // 啟用手動排序

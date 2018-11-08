@@ -70,10 +70,16 @@ module.exports = {
       filename: path.resolve(__dirname, 'Views/Shared/_Layout.cshtml'),
       chunks: ['index'],
       HtmlWebpackPluginOverride: true,
+      vendor: '~/wwwroot/vendor/dll.vendor.js', //与dll配置文件中output.fileName对齐
+      hash:true,//防止缓存
       outputFile: {
+        vendor: '~/wwwroot/vendor/dll.vendor.js',
         isProd: false,
         port: devServerPort
-      }
+      },
+      minify: true,
+      // 啟用手動排序
+      chunksSortMode: 'manual',
     }),
     new webpack.DllReferencePlugin({
       manifest: require('./wwwroot/vendor/vendor.manifest.json')

@@ -70,6 +70,8 @@
     </environment>
 
 
+    <script src="<%=  htmlWebpackPlugin.options.outputFile.vendor %>"></script>
+
     <%if (htmlWebpackPlugin.options.outputFile.isProd) {%>
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
     <script src="~/webpackTest<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>

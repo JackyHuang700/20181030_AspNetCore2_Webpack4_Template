@@ -10,7 +10,7 @@ var _ = require('lodash');
 console.log('index');
 
 
-console.log('lodashhhhh', _.defaults({ 'a': 1 }, { 'a': 3, 'b': 2 }))
+console.log('lodashhhhh', _.defaults({ 'a': 1 }, { 'a': 3, 'b': 9 }))
 
 function component() {
   var element = document.createElement('div');

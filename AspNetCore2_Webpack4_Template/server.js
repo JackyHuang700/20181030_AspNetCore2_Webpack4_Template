@@ -3,6 +3,7 @@ const proxy = require('http-proxy-middleware')
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
+const DashboardPlugin = require('webpack-dashboard/plugin')
 const { 
   devServerProxyTarget,
   expressDevServerPort,
@@ -10,6 +11,8 @@ const {
 const app = express()
 const config = require('./webpack.dev.js')
 const compiler = webpack(config)
+
+compiler.apply(new DashboardPlugin())
 
 app.use(express.static(__dirname + '/wwwroot/'))
 

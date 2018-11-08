@@ -7,8 +7,8 @@
     "dll": "webpack --config webpack.dll.js",
     "watch": "webpack --mode development --watch",
     "dev": "webpack  --watch --config webpack.dev.js",
-    "dev:server": "webpack-dev-server --config webpack.dev.js",
-    "dev:middle": "node server.js",
+    "dev:server": "webpack-dashboard -- webpack-dev-server --config webpack.dev.js",
+    "dev:middle": "webpack-dashboard -- node server.js",
     "prod": "webpack --config webpack.prod.js",
     "help": "webpack --help"
   },
@@ -38,6 +38,7 @@
     "webpack": "^4.24.0",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
+    "webpack-dashboard": "^2.0.0",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-dev-server": "^3.1.10",
     "webpack-hot-middleware": "^2.24.3",

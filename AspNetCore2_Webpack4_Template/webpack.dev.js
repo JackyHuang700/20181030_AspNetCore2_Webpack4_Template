@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const DashboardPlugin = require('webpack-dashboard/plugin')
 // 專門給 webpack-hot-middleware 用的
 const webpackhotMiddleware = 'webpack-hot-middleware/client?reload=true'
 const {
@@ -31,6 +32,7 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
+    new DashboardPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     // 當程式碼有錯誤時，不更新畫面，如果錯誤被修正才會hot reload
     // 這個可以選擇使用。

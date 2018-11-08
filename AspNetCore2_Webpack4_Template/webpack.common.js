@@ -34,12 +34,7 @@ module.exports = {
         exclude: [commonExclude],
         use: 'ts-loader'
       },
-      {
-        test: /\.css$/,
-        include: [commonInclude],
-        exclude: [commonExclude],
-        use: ['style-loader', 'css-loader']
-      },
+
       {
         test: /\.(png|svg|jpg|gif)$/,
         include: [commonInclude],
@@ -87,18 +82,21 @@ module.exports = {
       {
         from: path.resolve(__dirname, `ClientApp/cpoyVendor/aa/testa.js`),
         to: path.resolve(__dirname, `wwwroot/cpoyVendor`),
-        toType: 'dir',
+        toType: 'dir'
       },
       {
         from: path.resolve(__dirname, `ClientApp/cpoyVendor/bb/testb.js`),
         to: path.resolve(__dirname, `wwwroot/cpoyVendor`),
-        toType: 'dir',
+        toType: 'dir'
       },
       {
         from: path.resolve(__dirname, `ClientApp/cpoyVendor/`),
         to: path.resolve(__dirname, `wwwroot/cpoyVendor/cpoyVendorTwo`),
-        toType: 'dir',
-      },
+        toType: 'dir'
+      }
     ]),
+    // new webpack.ProvidePlugin({
+    //   _: 'lodash' //所有页面都会引入 _ 这个变量，不用再import引入
+    // })
   ]
 }

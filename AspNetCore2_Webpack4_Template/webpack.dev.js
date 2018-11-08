@@ -2,14 +2,16 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 // 專門給 webpack-hot-middleware 用的
 const webpackhotMiddleware = 'webpack-hot-middleware/client?reload=true'
-const { 
+const {
+  commonInclude,
+  commonExclude,
   modeDevelopment,
   devServerPort,
-  devServerProxyTarget,
- } = require("./webpack.define.js")
+  devServerProxyTarget
+} = require('./webpack.define.js')
 
 module.exports = merge(common, {
   // 模式
@@ -17,6 +19,16 @@ module.exports = merge(common, {
   entry: getNewCommonEntry(common),
   output: {
     filename: '[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        include: [commonInclude],
+        exclude: [commonExclude],
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -49,11 +61,11 @@ module.exports = merge(common, {
     inline: true,
     hot: true,
     // 啟動熱替換
-    hotOnly: true,
+    hotOnly: true
     // open: true,
     // host: 'localhost',
     // compress: false // 服务器返回浏览器的时候是否启动gzip压缩
-  },
+  }
   // watch: true, // 开启监听文件更改，自动刷新
   // watchOptions: {
   //     ignored: /node_modules/, //忽略不用监听变更的目录

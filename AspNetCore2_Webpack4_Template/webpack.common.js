@@ -3,7 +3,10 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+// happypack
+const HappyPack = require('happypack')
 const {
+  osCpusLength,
   commonInclude,
   commonExclude,
   // devServer 用這個
@@ -27,6 +30,17 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        include: [commonInclude],
+        exclude: [commonExclude],
+        use: {
+          loader: 'happypack/loader?id=babelJs'
+          // options: {
+          // presets: ['@babel/preset-env']
+          // }
+        }
+      },
       {
         // 使用 ts-loader 时，设置 happyPackMode: true / transpileOnly: true
         test: /\.tsx?$/,
@@ -64,6 +78,22 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['wwwroot/webpackTest']),
+    new HappyPack({
+      id: 'babelJs',
+      threadPool: HappyPack.ThreadPool({ size: osCpusLength }),
+      loaders: [
+        {
+          loader: 'babel-loader',
+          query: {
+            // optional: 'runtime',
+            cacheDirectory: true
+          }
+          // options: {
+          //   presets: ['@babel/preset-env']
+          // }
+        }
+      ],
+    }),
     new HtmlWebpackPlugin({
       inject: false,
       template: path.resolve(__dirname, 'Views/Shared/_LayoutTemplate.cshtml'),

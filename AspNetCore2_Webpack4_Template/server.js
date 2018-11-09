@@ -26,7 +26,12 @@ app.use(
     // noInfo: true,
     stats: {
       colors: true
-    }
+    },
+    // 当出现编译器错误或警告时，在浏览器中显示全屏覆盖层。默认禁用。如果你想要只显示编译器错误
+    overlay: { 
+      warnings: true, 
+      errors: true 
+     }, 
   })
 )
 
@@ -55,3 +60,5 @@ app.listen(expressDevServerPort, err => {
   }
   // console.log('Example app listening on port 3000!\n')
 })
+
+

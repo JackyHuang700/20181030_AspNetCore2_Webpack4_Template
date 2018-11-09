@@ -6,4 +6,5 @@ module.exports = {
   devServerProxyTarget: 'https://localhost:44376/',
   devServerPort: 8080,
   expressDevServerPort: 3000,
+  osCpusLength: require('os').cpus().length,
 }

@@ -17,6 +17,7 @@ const {
 module.exports = merge(common, {
   // 模式
   mode: modeDevelopment,
+  cache: true,
   entry: getNewCommonEntry(common),
   output: {
     filename: '[name].bundle.js'
@@ -40,7 +41,9 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(modeDevelopment)
     }),
-    new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin(),
+    // 这个插件的作用是在热加载时直接返回更新文件名，而不是文件的id。
+    new webpack.NamedModulesPlugin(),
   ],
   devtool: 'inline-source-map',
   devServer: {
@@ -59,6 +62,8 @@ module.exports = merge(common, {
         secure: false
       }
     },
+    // 当出现编译器错误或警告时，在浏览器中显示全屏覆盖层。默认禁用。如果你想要只显示编译器错误
+    overlay: true,
     port: devServerPort,
     inline: true,
     hot: true,
